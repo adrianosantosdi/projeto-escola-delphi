@@ -1,0 +1,231 @@
+unit unitSeries;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls;
+
+type
+  TfrmSeries = class(TForm)
+    Panel1: TPanel;
+    btnNovo: TSpeedButton;
+    btnSalvar: TSpeedButton;
+    btnEditar: TSpeedButton;
+    btnCancelar: TSpeedButton;
+    btnExcluir: TSpeedButton;
+    Label7: TLabel;
+    btnPesquisar: TButton;
+    edtPesquisar: TEdit;
+    Panel2: TPanel;
+    Label1: TLabel;
+    edtId: TEdit;
+    Label2: TLabel;
+    edtNome: TEdit;
+    Label3: TLabel;
+    edtValorMensalidade: TEdit;
+    DBGrid1: TDBGrid;
+    procedure btnSalvarClick(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure btnPesquisarClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure BotaoNovo;
+    procedure BotaoSalvar;
+    procedure BotaoEditar;
+    procedure BotaoCancelar;
+    procedure HabilitarEdits;
+    procedure DesabilitarEdits;
+    procedure LimparCampos;
+    procedure Pesquisar;
+    procedure Excluir;
+    procedure InserirDados;
+    procedure Update;
+    procedure PopularDados;
+  end;
+
+var
+  frmSeries: TfrmSeries;
+
+implementation
+
+{$R *.dfm}
+
+uses unitDM;
+
+{ TfrmSeries }
+
+procedure TfrmSeries.BotaoCancelar;
+begin
+  btnNovo.Enabled := true;
+  btnSalvar.Enabled := true;
+  btnEditar.Enabled := false;
+  btnCancelar.Enabled := false;
+  btnExcluir.Enabled := false;
+end;
+
+procedure TfrmSeries.BotaoEditar;
+begin
+  btnNovo.Enabled := true;
+  btnSalvar.Enabled := true;
+  btnEditar.Enabled := false;
+  btnCancelar.Enabled := false;
+  btnExcluir.Enabled := false;
+end;
+
+procedure TfrmSeries.BotaoNovo;
+begin
+ btnNovo.Enabled := true;
+ btnSalvar.Enabled := true;
+ btnEditar.Enabled := false;
+ btnCancelar.Enabled := true;
+ btnExcluir.Enabled := false;
+end;
+
+procedure TfrmSeries.BotaoSalvar;
+begin
+ btnNovo.Enabled := true;
+ btnSalvar.Enabled := true;
+ btnEditar.Enabled := true;
+ btnCancelar.Enabled := true;
+ btnExcluir.Enabled := false;
+end;
+
+procedure TfrmSeries.btnCancelarClick(Sender: TObject);
+begin
+  BotaoCancelar;
+  LimparCampos;
+end;
+
+procedure TfrmSeries.btnEditarClick(Sender: TObject);
+begin
+  BotaoEditar;
+  HabilitarEdits;
+  Update;
+
+end;
+
+procedure TfrmSeries.btnExcluirClick(Sender: TObject);
+begin
+  Excluir;
+  Pesquisar;
+end;
+
+procedure TfrmSeries.btnNovoClick(Sender: TObject);
+begin
+  if MessageDlg('Deseja criar um novo registro?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then;
+  BotaoNovo;
+  HabilitarEdits;
+end;
+
+procedure TfrmSeries.btnPesquisarClick(Sender: TObject);
+begin
+  Pesquisar;
+end;
+
+procedure TfrmSeries.btnSalvarClick(Sender: TObject);
+begin
+  if trim(edtId.Text) = '' then
+     InserirDados
+  else
+     PopularDados;
+
+  BotaoSalvar;
+  LimparCampos;
+  DesabilitarEdits;
+  Pesquisar;
+
+
+end;
+
+procedure TfrmSeries.DesabilitarEdits;
+begin
+  edtNome.Enabled := false;
+  edtValorMensalidade.Enabled := false;
+end;
+
+procedure TfrmSeries.Excluir;
+var
+  lID : Integer;
+begin
+    lID := DM.QrySeries.FieldByName('id').AsInteger;
+    with DM.QrySeries do
+    begin
+      close;
+      SQL.Clear;
+      SQL.Add('delete from series where id = :pid');
+      ParamByName('pid').AsInteger :=  lID;
+      ExecSQL;
+      MessageDlg('Registro deletado com sucesso', mtInformation, [mbOK], 0);
+    end;
+end;
+
+procedure TfrmSeries.HabilitarEdits;
+begin
+  edtNome.Enabled := true;
+  edtValorMensalidade.Enabled := true;
+end;
+
+procedure TfrmSeries.InserirDados;
+begin
+  with DM.QrySeries do
+    begin
+      close;
+      SQL.Clear;
+      SQL.Add('insert into series (nome, valor_mensalidade) values ');
+      SQL.Add('(:pnome, :pvalor_mensalidade)');
+      ParamByName('pnome').AsString := edtNome.Text;
+      ParamByName('pvalor_mensalidade').AsFloat := StrToFloatDef(edtValorMensalidade.Text,0);
+      ExecSQL;
+    end;
+end;
+
+procedure TfrmSeries.LimparCampos;
+begin
+  edtNome.Text := '';
+  edtValorMensalidade.Text := '';
+end;
+
+procedure TfrmSeries.Pesquisar;
+begin
+  DM.QrySeries.Close;
+  DM.QrySeries.SQL.Clear;
+
+  DM.QrySeries.SQL.Text := 'select * from series where nome like ' +  QuotedStr('%' + edtPesquisar.Text + '%') ;
+  DM.QrySeries.Open();
+end;
+
+procedure TfrmSeries.PopularDados;
+begin
+  edtId.Text := DM.QrySeries.FieldByName('ID').AsString;
+  edtNome.Text := DM.QrySeries.FieldByName('NOME').AsString;
+  edtValorMensalidade.Text := DM.QrySeries.FieldByName('VALOR_MENSALIDADE').AsString;
+end;
+
+procedure TfrmSeries.Update;
+begin
+  with DM.QrySeries do
+    begin
+      close;
+      SQL.Clear;
+      SQL.Add('update series                                '+
+               'set nome = :pnome,                          '+
+               'valor_mensalidade = :pvalor_mensalidade     '+
+                'where id = :pid ');
+      ParamByName('pid').AsInteger := StrToInt(edtId.Text);
+      ParamByName('pnome').AsString := edtNome.Text;
+      ParamByName('pvalor_mensalidade').AsFloat := StrToFloat(edtValorMensalidade.Text);
+      ExecSQL;
+      Pesquisar;
+      end;
+
+
+end;
+
+end.

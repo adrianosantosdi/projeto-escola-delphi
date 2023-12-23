@@ -1,0 +1,124 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 512
+  Width = 728
+  object FDConne: TFDConnection
+    Params.Strings = (
+      'Database=dbcadescola'
+      'User_Name=root'
+      'Password=p@ssw0rd'
+      'DriverID=MySQL')
+    Connected = True
+    LoginPrompt = False
+    Left = 48
+    Top = 72
+  end
+  object QryResponsaveis: TFDQuery
+    Connection = FDConne
+    SQL.Strings = (
+      'select * from responsaveis')
+    Left = 48
+    Top = 152
+  end
+  object dsResponsaveis: TDataSource
+    DataSet = QryResponsaveis
+    Left = 136
+    Top = 152
+  end
+  object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
+    VendorLib = 
+      'C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola' +
+      '\libmySQL.dll'
+    Left = 592
+    Top = 32
+  end
+  object QryAlunos: TFDQuery
+    Connection = FDConne
+    SQL.Strings = (
+      'select * from alunos')
+    Left = 48
+    Top = 224
+    object QryAlunosid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object QryAlunosnome: TStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Required = True
+      Size = 80
+    end
+    object QryAlunosendereco: TStringField
+      FieldName = 'endereco'
+      Origin = 'endereco'
+      Required = True
+      Size = 80
+    end
+    object QryAlunosbairro: TStringField
+      FieldName = 'bairro'
+      Origin = 'bairro'
+      Required = True
+      Size = 45
+    end
+    object QryAlunoscidade: TStringField
+      FieldName = 'cidade'
+      Origin = 'cidade'
+      Required = True
+      Size = 45
+    end
+    object QryAlunosuf: TStringField
+      FieldName = 'uf'
+      Origin = 'uf'
+      Required = True
+      FixedChar = True
+      Size = 2
+    end
+    object QryAlunoscep: TStringField
+      FieldName = 'cep'
+      Origin = 'cep'
+      Required = True
+      Size = 9
+    end
+    object QryAlunoscelular: TStringField
+      FieldName = 'celular'
+      Origin = 'celular'
+      Required = True
+      Size = 14
+    end
+    object QryAlunosoperadora: TStringField
+      FieldName = 'operadora'
+      Origin = 'operadora'
+      Required = True
+      Size = 50
+    end
+    object QryAlunosemail: TStringField
+      FieldName = 'email'
+      Origin = 'email'
+      Required = True
+      Size = 100
+    end
+    object QryAlunosautorizado_sair_com: TStringField
+      FieldName = 'autorizado_sair_com'
+      Origin = 'autorizado_sair_com'
+      Required = True
+      Size = 50
+    end
+    object QryAlunosensino_religioso: TStringField
+      FieldName = 'ensino_religioso'
+      Origin = 'ensino_religioso'
+      Required = True
+      Size = 1
+    end
+    object QryAlunosresponsavel_carne: TIntegerField
+      FieldName = 'responsavel_carne'
+      Origin = 'responsavel_carne'
+      Required = True
+    end
+  end
+  object dsAlunos: TDataSource
+    DataSet = QryAlunos
+    Left = 136
+    Top = 224
+  end
+end

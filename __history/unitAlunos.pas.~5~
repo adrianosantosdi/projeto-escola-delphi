@@ -1,0 +1,125 @@
+unit unitAlunos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls,
+  Data.DB, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TfrmAlunos = class(TForm)
+    Panel1: TPanel;
+    btnNovo: TSpeedButton;
+    btnSalvar: TSpeedButton;
+    btnEditar: TSpeedButton;
+    btnCancelar: TSpeedButton;
+    btnExcluir: TSpeedButton;
+    Label7: TLabel;
+    btnPesquisar: TButton;
+    edtPesquisar: TEdit;
+    Panel2: TPanel;
+    Label1: TLabel;
+    Edit1: TEdit;
+    Label2: TLabel;
+    Edit2: TEdit;
+    Label3: TLabel;
+    Edit3: TEdit;
+    Label4: TLabel;
+    Edit4: TEdit;
+    Label5: TLabel;
+    Edit5: TEdit;
+    Label6: TLabel;
+    Edit6: TEdit;
+    Label8: TLabel;
+    Edit7: TEdit;
+    Label9: TLabel;
+    Edit8: TEdit;
+    Label10: TLabel;
+    Edit9: TEdit;
+    Label11: TLabel;
+    Edit10: TEdit;
+    Label12: TLabel;
+    Edit11: TEdit;
+    RadioGroup1: TRadioGroup;
+    Label13: TLabel;
+    Edit12: TEdit;
+    DBGrid1: TDBGrid;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure BotaoNovo;
+    procedure BotaoSalvar;
+    procedure BotaoEditar;
+    procedure BotaoCancelar;
+    procedure BotaoExcluir;
+    procedure InserirDados;
+  end;
+
+var
+  frmAlunos: TfrmAlunos;
+
+implementation
+
+{$R *.dfm}
+
+uses unitDM, unitPrincipal, unitResponsaveis;
+
+{ TfrmAlunos }
+
+procedure TfrmAlunos.BotaoCancelar;
+begin
+  btnNovo.Enabled := true;
+  btnSalvar.Enabled := true;
+  btnEditar.Enabled := true;
+  btnCancelar.Enabled := true;
+  btnExcluir.Enabled := true;
+end;
+
+procedure TfrmAlunos.BotaoEditar;
+begin
+  btnNovo.Enabled := false;
+  btnSalvar.Enabled := true;
+  btnEditar.Enabled := true;
+  btnCancelar.Enabled := true;
+  btnExcluir.Enabled := false;
+end;
+
+procedure TfrmAlunos.BotaoExcluir;
+begin
+   btnNovo.Enabled := true;
+   btnSalvar.Enabled := true;
+   btnEditar.Enabled := true;
+   btnExcluir.Enabled:=true;
+end;
+
+procedure TfrmAlunos.BotaoNovo;
+begin
+ btnNovo.Enabled := false;
+ btnSalvar.Enabled := true;
+ btnEditar.Enabled := true;
+ btnCancelar.Enabled := true;
+ btnExcluir.Enabled := false;
+end;
+
+procedure TfrmAlunos.BotaoSalvar;
+begin
+ btnNovo.Enabled := false;
+ btnSalvar.Enabled := true;
+ btnEditar.Enabled := true;
+ btnCancelar.Enabled := true;
+ btnExcluir.Enabled := true;
+end;
+
+procedure TfrmAlunos.InserirDados;
+begin
+  with DM.Qr do
+    begin
+      close;
+      SQL.Clear;
+      SQL.Add('insert into ')
+    end;
+end;
+
+end.

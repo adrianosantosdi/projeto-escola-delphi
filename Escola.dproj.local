@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/03/15 21:22:53.000.317,=C:\Users\Adriano Santos\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/03/21 18:56:40.000.082,=C:\Users\Adriano Santos\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/12/04 00:30:03.000.003,=C:\Users\Adriano Santos\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 20:25:03.000.321,=C:\Users\Adriano Santos\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 20:25:27.000.073,C:\Users\Adriano Santos\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\unitPrincipal.pas</Transaction>
+    <Transaction>2023/12/21 20:25:27.000.073,C:\Users\Adriano Santos\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\unitPrincipal.dfm</Transaction>
+    <Transaction>2023/12/21 20:25:32.000.530,C:\Users\Adriano Santos\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\Escola.dproj</Transaction>
+    <Transaction>2023/12/21 20:28:11.000.489,=C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\Unit2.pas</Transaction>
+    <Transaction>2023/12/21 20:28:26.000.167,C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\Unit2.dfm=C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\unitResponsaveis.dfm</Transaction>
+    <Transaction>2023/12/21 20:28:26.000.167,C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\Unit2.pas=C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\unitResponsaveis.pas</Transaction>
+    <Transaction>2023/12/22 02:59:37.000.898,=C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\Unit1.pas</Transaction>
+    <Transaction>2023/12/22 03:03:50.000.967,C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\unitDM.pas=C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\Unit1.pas</Transaction>
+    <Transaction>2023/12/22 03:03:50.000.967,C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\unitDM.dfm=C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\Unit1.dfm</Transaction>
+    <Transaction>2023/12/22 09:32:58.000.125,=C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\Unit1.pas</Transaction>
+    <Transaction>2023/12/22 09:33:09.000.571,C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\Unit1.pas=C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\unitAlunos.pas</Transaction>
+    <Transaction>2023/12/22 09:33:09.000.571,C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\Unit1.dfm=C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\unitAlunos.dfm</Transaction>
+    <Transaction>2023/12/22 17:29:18.000.126,=C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\Unit1.pas</Transaction>
+    <Transaction>2023/12/22 17:30:37.000.596,C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\Unit1.pas=C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\unitSeries.pas</Transaction>
+    <Transaction>2023/12/22 17:30:37.000.596,C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\Unit1.dfm=C:\Users\Adriano Santos\Documents\Projetos Delphi\Projeto Escola\unitSeries.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

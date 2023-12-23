@@ -1,0 +1,20 @@
+program Escola;
+
+uses
+  Vcl.Forms,
+  unitPrincipal in 'unitPrincipal.pas' {frmPrincipal},
+  unitResponsaveis in 'unitResponsaveis.pas' {frmResponsaveis},
+  unitDM in 'unitDM.pas' {DM: TDataModule},
+  unitAlunos in 'unitAlunos.pas' {Form1};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmResponsaveis, frmResponsaveis);
+  Application.CreateForm(TDM, DM);
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.
